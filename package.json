@@ -7,5 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "yjy5264",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "babel-plugin-transform-es2015-arrow-functions": "^6.22.0"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1"
+  }
 }
