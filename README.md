@@ -1,21 +1,21 @@
-#redux-request-async-middleware
+# redux-request-async-middleware
 With this package, you can use react-redux without action, actionType, reducer, and so on.
 
-##Install
+## Install
 ```javascript
 npm install redux-request-async-middleware --save
 ```
-##propertys
-property | instruction	
--------- | -----------
-requests |this is a reducer 
-reduxRequest | correct middleware
-initReduxRequest | init function, initReduxRequest(store), it's required
-request | request(subject, model, next), next is a optional param
-requestAll | request(subjectModelArray, next), next is a optional param<br/>
-clear | clear(subject), you can clear this subject in the store
-##Usage
-###Provider
+## propertys
+| property | Description |
+| -------- | ----------- |
+| requests | this is a reducer |
+| reduxRequest | correct middleware |
+| initReduxRequest | init function, initReduxRequest(store), it's required |
+| request | request(subject, model, next), next is a optional param |
+| requestAll | request(subjectModelArray, next), next is a optional param |
+| clear | clear(subject), you can clear this subject in the store |
+## Usage
+### Provider
 ```javascript
 import React from 'react'
 import {createStore, applyMiddleware, combineReducers} from 'redux'
@@ -31,7 +31,7 @@ export default class extends React.Component {
     }
 }
 ```
-###model
+### model
 ```javascript
 import fetch from '../../libs/http/fetch'
 
@@ -41,13 +41,13 @@ export default class model {
     }
 }
 ```
-###subject
+### subject
 ```javascript
 export const subject = {
     yourSubject1: 'yourSubject1',
 }
 ```
-###Component
+### Component
 ```javascript
 import React from 'react'
 import model from './model'
