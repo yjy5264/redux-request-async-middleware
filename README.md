@@ -56,51 +56,51 @@ import {subject} from './subject'
 import {request, requestAll, clear} from 'redux-request-async-middleware'
 
 class YourComponent extends React.Component {
-	componentDidMount() {
-	    this.func();
-	}
-	
-	componentWillUnmount() {
-	    clear(subject.yourSubject4);
-	}
+componentDidMount() {
+    this.func();
+}
 
-	func() {
-	    request(subject.yourSubject1, () => model.yourModel1(param));
-	    const next = res => yourNext()
-	    request(subject.yourSubject2, () => model.yourModel2(param), next);
-	    let subjectModelArray = [
-	        {subject: subject.yourSubject3, model: model.yourModel3(param)},
-	        {subject: subject.yourSubject4, model: model.yourModel4(param)},
-	    ];
-	    requestAll(subjectModelArray);
-	}
-	
-	componentWillReceiveProps(props) {
-	    this.loading = false;
-	    this.loading = (props.yourSubject1 && props.yourSubject1.isFetching) ||
-            (props.yourSubject2 && props.yourSubject2.isFetching) ||
-            (props.yourSubject3 && props.yourSubject3.isFetching) ||
-            (props.yourSubject4 && props.yourSubject4.isFetching);
-            
-        if (props.yourSubject1 && props.yourSubject1.response) {
-            this.yourdata1 = props.yourSubject1.response;
-        }
-        if (props.yourSubject2 && props.yourSubject2.response) {
-            this.yourdata2 = props.yourSubject2.response;
-        }
-        if (props.yourSubject3 && props.yourSubject3.response) {
-            
-        }
-        if (props.yourSubject4 && props.yourSubject4.response) {
-            
-        }
-	}
-	
-	render() {
-	    return(
-	        <OtherComponent data1={this.yourdata1} data2={this.yourdata2} loading={this.loading} />
-	    )
-	}
+componentWillUnmount() {
+    clear(subject.yourSubject4);
+}
+
+func() {
+    request(subject.yourSubject1, () => model.yourModel1(param));
+    const next = res => yourNext()
+    request(subject.yourSubject2, () => model.yourModel2(param), next);
+    let subjectModelArray = [
+        {subject: subject.yourSubject3, model: model.yourModel3(param)},
+        {subject: subject.yourSubject4, model: model.yourModel4(param)},
+    ];
+    requestAll(subjectModelArray);
+}
+
+componentWillReceiveProps(props) {
+    this.loading = false;
+    this.loading = (props.yourSubject1 && props.yourSubject1.isFetching) ||
+        (props.yourSubject2 && props.yourSubject2.isFetching) ||
+        (props.yourSubject3 && props.yourSubject3.isFetching) ||
+        (props.yourSubject4 && props.yourSubject4.isFetching);
+        
+    if (props.yourSubject1 && props.yourSubject1.response) {
+        this.yourdata1 = props.yourSubject1.response;
+    }
+    if (props.yourSubject2 && props.yourSubject2.response) {
+        this.yourdata2 = props.yourSubject2.response;
+    }
+    if (props.yourSubject3 && props.yourSubject3.response) {
+        
+    }
+    if (props.yourSubject4 && props.yourSubject4.response) {
+        
+    }
+}
+
+render() {
+    return(
+        <OtherComponent data1={this.yourdata1} data2={this.yourdata2} loading={this.loading} />
+    )
+}
 }
 
 const select = state => {
