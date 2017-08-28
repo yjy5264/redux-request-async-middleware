@@ -12,18 +12,17 @@ import {
     FETCH_POSTS_REQUEST_ALL,
 } from '../reducer/actionType'
 
-export const reduxRequest = store => next => async action => {
+export const reduxRequest = store => next => action => {
     let result = next(action);
     let { type, subject, model, subjectModelArray } = action;
     let _next = action.next;
     if(type === FETCH_POSTS_REQUEST) {
-        try {
-            let response = await model();
+        model().then(response => {
             store.dispatch(fetchPostsSuccess(subject, response));
             _next && _next(response);
-        } catch(error) {
+        }).catch(error => {
             store.dispatch(fetchPostsFailure(subject, error));
-        }
+        });
     }
     if(type === FETCH_POSTS_REQUEST_ALL) {
         let subjectArray = [];
