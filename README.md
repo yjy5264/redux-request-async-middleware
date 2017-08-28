@@ -6,7 +6,7 @@ With this package, you can use react-redux without action, actionType, reducer, 
 npm install redux-request-async-middleware --save
 ```
 ## propertys
-| property | Description |
+| Property | Description |
 | -------- | ----------- |
 | requests | this is a reducer |
 | reduxRequest | correct middleware |
