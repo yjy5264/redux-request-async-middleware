@@ -7,9 +7,8 @@ exports.requestAll = exports.request = exports.clear = exports.initReduxRequest 
 
 var _action = require('../reducer/action');
 
-var _dispatch; /**
-                * Created by yjy on 2017/8/21.
-                */
+var _dispatch;
+
 var initReduxRequest = exports.initReduxRequest = function initReduxRequest(store) {
     _dispatch = store.dispatch;
 };
