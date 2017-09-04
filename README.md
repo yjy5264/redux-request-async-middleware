@@ -1,5 +1,5 @@
 # redux-request-async-middleware
-With this package, you can use react-redux without action, actionType, reducer, and so on.
+With this package, you can use react-redux without action, actionType, reducer, etc.
 
 ## Install
 ```javascript
