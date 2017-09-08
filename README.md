@@ -72,7 +72,7 @@ class YourComponent extends React.Component {
         
         const next = res => yourNext()
         request(subject.yourSubject2, () => model.yourModel2(param), next);
-        //with this, you can get zhe callback
+        //with this, you can get the callback
         
         let subjectModelArray = [
             {subject: subject.yourSubject3, model: model.yourModel3(param)},
