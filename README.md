@@ -34,6 +34,7 @@ export default class extends React.Component {
 ### model
 ```javascript
 import fetch from '../../libs/http/fetch'
+//fetch is your own warpped Promise，you can handle response inside, you can also ues xhr, but it must be a Promise
 
 export default class model {
     static yourModel1(param) {
