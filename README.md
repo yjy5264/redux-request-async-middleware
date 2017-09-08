@@ -68,13 +68,18 @@ class YourComponent extends React.Component {
     
     func() {
         request(subject.yourSubject1, () => model.yourModel1(param));
+        //request base usage
+        
         const next = res => yourNext()
         request(subject.yourSubject2, () => model.yourModel2(param), next);
+        //with this, you can get zhe callback
+        
         let subjectModelArray = [
             {subject: subject.yourSubject3, model: model.yourModel3(param)},
             {subject: subject.yourSubject4, model: model.yourModel4(param)},
         ];
         requestAll(subjectModelArray);
+        //it's made by promise all inside
     }
     
     componentWillReceiveProps(props) {
@@ -83,6 +88,7 @@ class YourComponent extends React.Component {
             (props.yourSubject2 && props.yourSubject2.isFetching) ||
             (props.yourSubject3 && props.yourSubject3.isFetching) ||
             (props.yourSubject4 && props.yourSubject4.isFetching);
+        //there you can get the loading state
             
         if (props.yourSubject1 && props.yourSubject1.response) {
             this.yourdata1 = props.yourSubject1.response;
@@ -96,6 +102,8 @@ class YourComponent extends React.Component {
         if (props.yourSubject4 && props.yourSubject4.response) {
             
         }
+        //if you add the subject in following select, you can handle data here
+        //you can add the subject in other component select to realize cross-page operation
     }
     
     render() {
