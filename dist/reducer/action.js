@@ -14,8 +14,9 @@ var fetchPostsRequest = exports.fetchPostsRequest = function fetchPostsRequest(s
         model: model,
         next: next
     };
-};
-
+}; /**
+    * Created by yjy on 2017/3/31.
+    */
 var fetchPostsSuccess = exports.fetchPostsSuccess = function fetchPostsSuccess(subject, response) {
     return {
         type: _actionType.FETCH_POSTS_SUCCESS,

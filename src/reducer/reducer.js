@@ -30,6 +30,7 @@ export const requests = (state = {}, action) => {
                 {
                     [action.subject]: {
                         isFetching: false,
+                        response: null,
                         error: action.error,
                     }
                 }
@@ -41,6 +42,7 @@ export const requests = (state = {}, action) => {
                     [action.subject]: {
                         isFetching: false,
                         response: action.response,
+                        error: null,
                     }
                 }
             );
@@ -49,7 +51,9 @@ export const requests = (state = {}, action) => {
                 state,
                 {
                     [action.subject]: {
-                        isFetching: false
+                        isFetching: false,
+                        response: null,
+                        error: null,
                     }
                 }
             );

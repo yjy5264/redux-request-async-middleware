@@ -9,6 +9,9 @@ var _action = require('../reducer/action');
 
 var _actionType = require('../reducer/actionType');
 
+/**
+ * Created by yjy on 2017/8/21.
+ */
 var reduxRequest = exports.reduxRequest = function reduxRequest(store) {
     return function (next) {
         return function (action) {
