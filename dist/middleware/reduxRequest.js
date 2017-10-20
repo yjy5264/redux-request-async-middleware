@@ -21,8 +21,8 @@ var reduxRequest = exports.reduxRequest = function reduxRequest(store) {
             var _next = action.next;
             if (type === _actionType.FETCH_POSTS_REQUEST) {
                 model().then(function (response) {
-                    store.dispatch((0, _action.fetchPostsSuccess)(subject, response));
                     _next && _next(response);
+                    store.dispatch((0, _action.fetchPostsSuccess)(subject, response));
                 }).catch(function (error) {
                     store.dispatch((0, _action.fetchPostsFailure)(subject, error));
                 });
@@ -57,8 +57,8 @@ var reduxRequest = exports.reduxRequest = function reduxRequest(store) {
                 }
 
                 Promise.all(modelArray).then(function (responseArray) {
-                    store.dispatch((0, _action.fetchPostsSuccessAll)(subjectArray, responseArray));
                     _next && _next(responseArray);
+                    store.dispatch((0, _action.fetchPostsSuccessAll)(subjectArray, responseArray));
                 }).catch(function (e) {
                     store.dispatch((0, _action.fetchPostsFailureAll)(subjectArray, e));
                 });

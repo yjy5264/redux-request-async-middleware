@@ -18,8 +18,8 @@ export const reduxRequest = store => next => action => {
     let _next = action.next;
     if(type === FETCH_POSTS_REQUEST) {
         model().then(response => {
-            store.dispatch(fetchPostsSuccess(subject, response));
             _next && _next(response);
+            store.dispatch(fetchPostsSuccess(subject, response));
         }).catch(error => {
             store.dispatch(fetchPostsFailure(subject, error));
         });
@@ -32,8 +32,8 @@ export const reduxRequest = store => next => action => {
             modelArray.push(x.model);
         }
         Promise.all(modelArray).then(responseArray => {
-            store.dispatch(fetchPostsSuccessAll(subjectArray, responseArray));
             _next && _next(responseArray);
+            store.dispatch(fetchPostsSuccessAll(subjectArray, responseArray));
         }).catch(e => {
             store.dispatch(fetchPostsFailureAll(subjectArray, e));
         })
