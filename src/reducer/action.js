@@ -6,9 +6,6 @@ import {
     FETCH_POSTS_FAILURE,
     FETCH_POSTS_SUCCESS,
     FETCH_POSTS_CLEAR,
-    FETCH_POSTS_REQUEST_ALL,
-    FETCH_POSTS_SUCCESS_ALL,
-    FETCH_POSTS_FAILURE_ALL
 } from './actionType';
 
 export const fetchPostsRequest = (subject, model, next) => {
@@ -40,29 +37,5 @@ export const fetchPostsClear = (subject) => {
     return {
         type: FETCH_POSTS_CLEAR,
         subject
-    }
-};
-
-export const fetchPostsRequestAll = (subjectModelArray, next) => {
-    return {
-        type: FETCH_POSTS_REQUEST_ALL,
-        subjectModelArray,
-        next,
-    }
-};
-
-export const fetchPostsSuccessAll = (subjectArray, responseArray) => {
-    return {
-        type: FETCH_POSTS_SUCCESS_ALL,
-        subjectArray,
-        responseArray
-    }
-};
-
-export const fetchPostsFailureAll = (subjectArray, error) => {
-    return {
-        type: FETCH_POSTS_FAILURE_ALL,
-        subjectArray,
-        error
     }
 };
