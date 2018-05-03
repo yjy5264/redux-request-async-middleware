@@ -1,10 +1,10 @@
 {
   "name": "redux-request-async-middleware",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
-    "babel": "npx babel src --out-file index.js --plugins=transform-es2015-arrow-functions --presets=es2015,stage-0"
+    "babel": "npx babel src --out-dir dist --plugins=transform-es2015-arrow-functions --presets=es2015,stage-0"
   },
   "author": "yjy5264",
   "license": "MIT",

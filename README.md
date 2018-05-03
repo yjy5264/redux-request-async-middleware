@@ -12,7 +12,6 @@ npm install redux-request-async-middleware --save
 | reduxRequest | correct middleware |
 | initReduxRequest | init function, initReduxRequest(store), it's required |
 | request | request(subject, model, next), next is a optional param |
-| requestAll | request(subjectModelArray, next), next is a optional param |
 | clear | clear(subject), you can clear this subject in the store |
 ## Usage
 ### Provider
@@ -47,23 +46,39 @@ export default class model {
 ```javascript
 export const subject = {
     yourSubject1: 'yourSubject1',
+    yourSubject1: 'yourSubject2',
+    yourSubject1: 'yourSubject3',
 }
 ```
 ### Component
 ```javascript
 import React from 'react'
 import model from './model'
-import {connect} from "react-redux"
-import {subject} from './subject'
-import {request, requestAll, clear} from 'redux-request-async-middleware'
+import { connect } from "react-redux"
+import { subject } from './subject'
+import { request, clear, reduxUtils } from 'redux-request-async-middleware'
 
-class YourComponent extends React.Component {
+@connect(state => {
+    let yourSubject1State = state.requests[subject.yourSubject1];
+    let yourSubject2State = state.requests[subject.yourSubject2];
+    let yourSubject3State = state.requests[subject.yourSubject3];
+    let loading = reduxUtils.getLoading([yourSubject1State, yourSubject2State, yourSubject3State]);
+    //there you can get the loading state
+    let yourSubject1 = reduxUtils.getResponse(yourSubject1State);
+    let yourSubject2 = reduxUtils.getResponse(yourSubject2State);
+    let yourSubject3 = reduxUtils.getResponse(yourSubject3State);
+    //if you add the subject in following select, you can handle data here
+    //you can add the subject in other component select to realize cross-page operation
+    return { loading, yourSubject1, yourSubject2, yourSubject3 };
+})
+export default class YourComponent extends React.Component {
     componentDidMount() {
         this.func();
     }
     
     componentWillUnmount() {
-        clear(subject.yourSubject4);
+        clear(subject.yourSubject1);
+        // you can clear the subject in redux store
     }
     
     func() {
@@ -73,54 +88,17 @@ class YourComponent extends React.Component {
         const next = res => yourNext()
         request(subject.yourSubject2, () => model.yourModel2(param), next);
         //with this, you can get the callback
-        
-        let subjectModelArray = [
-            {subject: subject.yourSubject3, model: model.yourModel3(param)},
-            {subject: subject.yourSubject4, model: model.yourModel4(param)},
-        ];
-        requestAll(subjectModelArray);
-        //it's made by promise all inside
-    }
-    
-    componentWillReceiveProps(props) {
-        this.loading = false;
-        this.loading = (props.yourSubject1 && props.yourSubject1.isFetching) ||
-            (props.yourSubject2 && props.yourSubject2.isFetching) ||
-            (props.yourSubject3 && props.yourSubject3.isFetching) ||
-            (props.yourSubject4 && props.yourSubject4.isFetching);
-        //there you can get the loading state
-            
-        if (props.yourSubject1 && props.yourSubject1.response) {
-            this.yourdata1 = props.yourSubject1.response;
-        }
-        if (props.yourSubject2 && props.yourSubject2.response) {
-            this.yourdata2 = props.yourSubject2.response;
-        }
-        if (props.yourSubject3 && props.yourSubject3.response) {
-            
-        }
-        if (props.yourSubject4 && props.yourSubject4.response) {
-            
-        }
-        //if you add the subject in following select, you can handle data here
-        //you can add the subject in other component select to realize cross-page operation
     }
     
     render() {
         return(
-            <OtherComponent data1={this.yourdata1} data2={this.yourdata2} loading={this.loading} />
+            <OtherComponent 
+                data1={this.props.yourSubject1} 
+                data2={this.props.yourSubject2} 
+                data3={this.props.yourSubject3} 
+                loading={this.props.loading} 
+            />
         )
     }
 }
-
-const select = state => {
-    return {
-        yourSubject1: state.requests[subject.yourSubject1],
-        yourSubject2: state.requests[subject.yourSubject2],
-        yourSubject3: state.requests[subject.yourSubject3],
-        yourSubject4: state.requests[subject.yourSubject4],
-    }
-};
-
-export default connect(select)(YourComponent)
 ```
