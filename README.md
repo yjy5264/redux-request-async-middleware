@@ -16,23 +16,23 @@ npm install redux-request-async-middleware --save
 ## Usage
 ### Provider
 ```javascript
-import React from 'react'
-import {createStore, applyMiddleware, combineReducers} from 'redux'
-import {Provider} from 'react-redux'
-import {initReduxRequest, reduxRequest, requests} from 'redux-request-async-middleware'
+import React from 'react;
+import {createStore, applyMiddleware, combineReducers} from 'redux';
+import {Provider} from 'react-redux';
+import {initReduxRequest, reduxRequest, requests} from 'redux-request-async-middleware';
 
 export default class extends React.Component {
     render() {
-        const rootReducer = combineReducers({requests}); //you can add other reducers
+        const rootReducer = combineReducers({requests}); // you can add other reducers
         const store = createStore(rootReducer, applyMiddleware(reduxRequest));
-        initReduxRequest(store);
-        return <Provider store={store}>{this.props.children}</Provider>
+        initReduxRequest(store); // to make sure that middleware get the store.dispatch function, so it is important 
+        return <Provider store={store}>{this.props.children}</Provider>
     }
 }
 ```
 ### model
 ```javascript
-import fetch from '../../libs/http/fetch'
+import fetch from '../../libs/http/fetch';
 //fetch is your own warpped Promise，you can handle request and response inside
 //you can also ues xhr, but it must be a warpped Promise
 
@@ -52,11 +52,11 @@ export const subject = {
 ```
 ### Component
 ```javascript
-import React from 'react'
-import model from './model'
-import { connect } from "react-redux"
-import { subject } from './subject'
-import { request, clear, reduxUtils } from 'redux-request-async-middleware'
+import React from 'react';
+import model from './model';
+import { connect } from "react-redux";
+import { subject } from './subject';
+import { request, clear, reduxUtils } from 'redux-request-async-middleware';
 
 @connect(state => {
     let yourSubject1State = state.requests[subject.yourSubject1];
@@ -91,12 +91,13 @@ export default class YourComponent extends React.Component {
     }
     
     render() {
+        let { loading, yourSubject1, yourSubject2, yourSubject3 } = this.props;
         return(
             <OtherComponent 
-                data1={this.props.yourSubject1} 
-                data2={this.props.yourSubject2} 
-                data3={this.props.yourSubject3} 
-                loading={this.props.loading} 
+                data1={yourSubject1} 
+                data2={yourSubject2} 
+                data3={yourSubject3} 
+                loading={loading} 
             />
         )
     }
