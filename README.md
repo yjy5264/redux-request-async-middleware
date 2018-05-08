@@ -11,7 +11,7 @@ npm install redux-request-async-middleware --save
 | requests | this is a reducer |
 | reduxRequest | correct middleware |
 | initReduxRequest | init function, initReduxRequest(store), it's required |
-| request | request(subject, model, next), next is a optional param |
+| request | request(subject, model, next), next is a optional param, model must be a Promise |
 | clear | clear(subject), you can clear this subject in the store |
 ## Usage
 ### Provider
@@ -73,21 +73,17 @@ import { request, clear, reduxUtils } from 'redux-request-async-middleware';
 })
 export default class YourComponent extends React.Component {
     componentDidMount() {
-        this.func();
-    }
-    
-    componentWillUnmount() {
-        clear(subject.yourSubject1);
-        // you can clear the subject in redux store
-    }
-    
-    func() {
         request(subject.yourSubject1, () => model.yourModel1(param));
         //request base usage
         
         const next = res => yourNext()
         request(subject.yourSubject2, () => model.yourModel2(param), next);
         //with this, you can get the callback
+    }
+    
+    componentWillUnmount() {
+        clear(subject.yourSubject1);
+        // you can clear the subject in redux store
     }
     
     render() {
