@@ -25,7 +25,7 @@ export default class extends React.Component {
     render() {
         const rootReducer = combineReducers({requests}); // you can add other reducers
         const store = createStore(rootReducer, applyMiddleware(reduxRequest));
-        initReduxRequest(store); // to make sure that middleware get the store.dispatch function, so it is important 
+        initReduxRequest(store); // to make sure that request can get the store.dispatch function, so it is important 
         return <Provider store={store}>{this.props.children}</Provider>
     }
 }
