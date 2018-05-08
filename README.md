@@ -16,7 +16,7 @@ npm install redux-request-async-middleware --save
 ## Usage
 ### Provider
 ```javascript
-import React from 'react;
+import React from 'react';
 import {createStore, applyMiddleware, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
 import {initReduxRequest, reduxRequest, requests} from 'redux-request-async-middleware';
