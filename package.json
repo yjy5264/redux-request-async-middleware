@@ -1,6 +1,6 @@
 {
   "name": "redux-request-async-middleware",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "",
   "main": "./dist/index.js",
   "scripts": {
@@ -13,5 +13,8 @@
     "babel-plugin-transform-es2015-arrow-functions": "^6.22.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1"
+  },
+  "dependencies": {
+    "object-assign": "^4.1.1"
   }
 }

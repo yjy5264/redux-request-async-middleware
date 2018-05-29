@@ -7,11 +7,12 @@ import {
     FETCH_POSTS_SUCCESS,
     FETCH_POSTS_CLEAR,
 } from './actionType';
+import assign from 'object-assign';
 
 export const requests = (state = {}, action) => {
     switch (action.type) {
         case FETCH_POSTS_REQUEST:
-            return Object.assign({},
+            return assign({},
                 state,
                 {
                     [action.subject]: {
@@ -23,7 +24,7 @@ export const requests = (state = {}, action) => {
                 }
             );
         case FETCH_POSTS_FAILURE:
-            return Object.assign({},
+            return assign({},
                 state,
                 {
                     [action.subject]: {
@@ -35,7 +36,7 @@ export const requests = (state = {}, action) => {
                 }
             );
         case FETCH_POSTS_SUCCESS:
-            return Object.assign({},
+            return assign({},
                 state,
                 {
                     [action.subject]: {
@@ -47,7 +48,7 @@ export const requests = (state = {}, action) => {
                 }
             );
         case FETCH_POSTS_CLEAR:
-            return Object.assign({},
+            return assign({},
                 state,
                 {
                     [action.subject]: {
