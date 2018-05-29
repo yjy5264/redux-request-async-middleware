@@ -2,8 +2,12 @@
 With this package, you can use react-redux without action, actionType, reducer, etc.
 
 ## Install
-```javascript
-npm install redux-request-async-middleware --save
+```
+npm i redux-request-async-middleware
+```
+or
+```
+yarn add redux-request-async-middleware
 ```
 ## propertys
 | Property | Description |
