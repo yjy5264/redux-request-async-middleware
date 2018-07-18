@@ -16,8 +16,9 @@ export const requests = (state = {}, action) => {
                 state,
                 {
                     [action.subject]: {
-                        subject: action.subject,
                         isFetching: true,
+                        state: 'loading',
+                        subject: action.subject,
                         response: null,
                         error: null,
                     }
@@ -28,9 +29,10 @@ export const requests = (state = {}, action) => {
                 state,
                 {
                     [action.subject]: {
-                        subject: action.subject,
                         isFetching: false,
-                        response: null,
+                        state: 'error',
+                        subject: action.subject,
+                        response: state[action.subject].response,
                         error: action.error,
                     }
                 }
@@ -40,10 +42,10 @@ export const requests = (state = {}, action) => {
                 state,
                 {
                     [action.subject]: {
-                        subject: action.subject,
                         isFetching: false,
+                        state: 'success',
+                        subject: action.subject,
                         response: action.response,
-                        error: null,
                     }
                 }
             );
@@ -52,8 +54,9 @@ export const requests = (state = {}, action) => {
                 state,
                 {
                     [action.subject]: {
-                        subject: null,
                         isFetching: false,
+                        state: 'cleared',
+                        subject: null,
                         response: null,
                         error: null,
                     }

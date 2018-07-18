@@ -25,29 +25,32 @@ var requests = exports.requests = function requests() {
     switch (action.type) {
         case _actionType.FETCH_POSTS_REQUEST:
             return (0, _objectAssign2.default)({}, state, _defineProperty({}, action.subject, {
-                subject: action.subject,
                 isFetching: true,
+                state: 'loading',
+                subject: action.subject,
                 response: null,
                 error: null
             }));
         case _actionType.FETCH_POSTS_FAILURE:
             return (0, _objectAssign2.default)({}, state, _defineProperty({}, action.subject, {
-                subject: action.subject,
                 isFetching: false,
-                response: null,
+                state: 'error',
+                subject: action.subject,
+                response: state[action.subject].response,
                 error: action.error
             }));
         case _actionType.FETCH_POSTS_SUCCESS:
             return (0, _objectAssign2.default)({}, state, _defineProperty({}, action.subject, {
-                subject: action.subject,
                 isFetching: false,
-                response: action.response,
-                error: null
+                state: 'success',
+                subject: action.subject,
+                response: action.response
             }));
         case _actionType.FETCH_POSTS_CLEAR:
             return (0, _objectAssign2.default)({}, state, _defineProperty({}, action.subject, {
-                subject: null,
                 isFetching: false,
+                state: 'cleared',
+                subject: null,
                 response: null,
                 error: null
             }));
