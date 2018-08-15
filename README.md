@@ -103,3 +103,4 @@ export default class YourComponent extends React.Component {
     }
 }
 ```
+### [设计思路(中文).md](https://github.com/yjy5264/yjy5264.github.io/blob/master/blogs/redux2.md)
